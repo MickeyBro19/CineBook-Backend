@@ -1,11 +1,11 @@
-package com.mickey.supportdesk.service.impl;
+package com.mickey.supportdesk.auth.service.impl;
 
 import com.mickey.supportdesk.dto.UserRequestDto;
 import com.mickey.supportdesk.dto.UserResponseDto;
 import com.mickey.supportdesk.entity.User;
 import com.mickey.supportdesk.exception.EmailAlreadyExistsException;
 import com.mickey.supportdesk.repository.UserRepository;
-import com.mickey.supportdesk.service.UserService;
+import com.mickey.supportdesk.auth.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;

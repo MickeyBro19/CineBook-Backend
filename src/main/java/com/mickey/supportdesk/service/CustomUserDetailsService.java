@@ -1,4 +1,4 @@
-package service;
+package com.mickey.supportdesk.service;
 
 import com.mickey.supportdesk.exception.UserNotFoundException;
 import com.mickey.supportdesk.repository.UserRepository;

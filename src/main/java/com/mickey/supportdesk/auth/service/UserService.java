@@ -1,4 +1,4 @@
-package com.mickey.supportdesk.service;
+package com.mickey.supportdesk.auth.service;
 
 import com.mickey.supportdesk.dto.UserRequestDto;
 import com.mickey.supportdesk.dto.UserResponseDto;
