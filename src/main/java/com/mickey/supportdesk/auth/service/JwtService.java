@@ -18,4 +18,10 @@ public interface JwtService {
 	public Long getUserId(String token);
 	
 	public Long accessTokenExpiration(String token);
+	
+	Long getAccessTokenTtl();
+	
+	Long getRefreshTokenTtl();
+	
+	Long refreshTokenExpiration(String token);
 }

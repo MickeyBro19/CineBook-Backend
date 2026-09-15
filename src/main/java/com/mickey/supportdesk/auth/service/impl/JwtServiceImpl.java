@@ -6,6 +6,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -77,6 +78,22 @@ public class JwtServiceImpl implements JwtService {
 	}
 	
 	public Long accessTokenExpiration(String token) {
+		Claims claims = parse(token);
+		return claims.getExpiration().getTime();
+	}
+	
+	@Override
+	public Long getAccessTokenTtl() {
+		return accessExpTtl;
+	}
+	
+	@Override
+	public Long getRefreshTokenTtl() {
+		return refreshExpTtl;
+	}
+	
+	@Override
+	public Long refreshTokenExpiration(String token) {
 		Claims claims = parse(token);
 		return claims.getExpiration().getTime();
 	}

@@ -32,7 +32,8 @@ public class UserServiceImpl implements UserService {
 		if (userRepository.existsByEmail(email)) {
 			throw new EmailAlreadyExistsException("User with email: " + email + " already exists!");
 		}
-		User newUser = User.builder().name(user.getName()).email(email).password(passwordEncoder.encode(user.getPassword())).build();
+		String password = passwordEncoder.encode(user.getPassword());
+		User newUser = User.builder().name(user.getName()).email(email).password(password).build();
 		userRepository.save(newUser);
 		return modelMapper.map(newUser, UserResponseDto.class);
 	}
