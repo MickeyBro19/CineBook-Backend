@@ -68,9 +68,5 @@ public class AuthController {
 				modelMapper.map(user, UserResponseDto.class));
 		return ResponseEntity.ok(tokenResponse);
 	}
-	
-	@GetMapping("/user")
-	public ResponseEntity<List<UserResponseDto>> getAllUsers() {
-		return ResponseEntity.ok(userService.findAllUsers());
-	}
+
 }
