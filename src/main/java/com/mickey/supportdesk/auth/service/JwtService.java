@@ -24,4 +24,6 @@ public interface JwtService {
 	Long getRefreshTokenTtl();
 	
 	Long refreshTokenExpiration(String token);
+	
+	String getJti(String refreshToken);
 }

@@ -97,4 +97,9 @@ public class JwtServiceImpl implements JwtService {
 		Claims claims = parse(token);
 		return claims.getExpiration().getTime();
 	}
+	
+	@Override
+	public String getJti(String refreshToken) {
+		return parse(refreshToken).getId();
+	}
 }
