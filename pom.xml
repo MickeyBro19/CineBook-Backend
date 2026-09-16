@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.mickey</groupId>
-    <artifactId>supportDesk</artifactId>
+    <artifactId>cinebook</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>supportDesk</name>
-    <description>supportDesk</description>
+    <name>CineBook</name>
+    <description>Movie ticket booking backend</description>
     <url/>
     <licenses>
         <license/>
