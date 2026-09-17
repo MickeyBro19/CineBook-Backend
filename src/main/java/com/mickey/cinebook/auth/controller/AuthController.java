@@ -1,13 +1,13 @@
 package com.mickey.cinebook.auth.controller;
 
+import com.mickey.cinebook.auth.dto.*;
 import com.mickey.cinebook.auth.service.CookieService;
 import com.mickey.cinebook.auth.service.JwtService;
 import com.mickey.cinebook.auth.service.UserService;
-import com.mickey.cinebook.dto.*;
-import com.mickey.cinebook.entity.RefreshToken;
-import com.mickey.cinebook.entity.User;
-import com.mickey.cinebook.repository.RefreshTokenRepository;
-import com.mickey.cinebook.repository.UserRepository;
+import com.mickey.cinebook.auth.entity.RefreshToken;
+import com.mickey.cinebook.auth.entity.User;
+import com.mickey.cinebook.auth.repository.RefreshTokenRepository;
+import com.mickey.cinebook.auth.repository.UserRepository;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

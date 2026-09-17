@@ -1,7 +1,7 @@
-package com.mickey.cinebook.service;
+package com.mickey.cinebook.auth.service;
 
 import com.mickey.cinebook.exception.UserNotFoundException;
-import com.mickey.cinebook.repository.UserRepository;
+import com.mickey.cinebook.auth.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

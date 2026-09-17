@@ -1,6 +1,6 @@
-package com.mickey.cinebook.repository;
+package com.mickey.cinebook.auth.repository;
 
-import com.mickey.cinebook.entity.RefreshToken;
+import com.mickey.cinebook.auth.entity.RefreshToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

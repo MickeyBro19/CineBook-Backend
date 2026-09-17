@@ -1,6 +1,6 @@
 package com.mickey.cinebook.auth.service;
 
-import com.mickey.cinebook.entity.User;
+import com.mickey.cinebook.auth.entity.User;
 import io.jsonwebtoken.Claims;
 
 public interface JwtService {

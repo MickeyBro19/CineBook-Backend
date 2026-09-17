@@ -1,10 +1,10 @@
 package com.mickey.cinebook.auth.service.impl;
 
-import com.mickey.cinebook.dto.UserRequestDto;
-import com.mickey.cinebook.dto.UserResponseDto;
-import com.mickey.cinebook.entity.User;
+import com.mickey.cinebook.auth.dto.UserRequestDto;
+import com.mickey.cinebook.auth.dto.UserResponseDto;
+import com.mickey.cinebook.auth.entity.User;
 import com.mickey.cinebook.exception.EmailAlreadyExistsException;
-import com.mickey.cinebook.repository.UserRepository;
+import com.mickey.cinebook.auth.repository.UserRepository;
 import com.mickey.cinebook.auth.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;

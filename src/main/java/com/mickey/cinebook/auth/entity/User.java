@@ -1,6 +1,6 @@
-package com.mickey.cinebook.entity;
+package com.mickey.cinebook.auth.entity;
 
-import com.mickey.cinebook.entity.enums.Role;
+import com.mickey.cinebook.auth.entity.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;

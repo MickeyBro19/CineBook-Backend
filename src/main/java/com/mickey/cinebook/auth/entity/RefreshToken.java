@@ -1,4 +1,4 @@
-package com.mickey.cinebook.entity;
+package com.mickey.cinebook.auth.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

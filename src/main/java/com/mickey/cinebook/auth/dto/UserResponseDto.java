@@ -1,6 +1,6 @@
-package com.mickey.cinebook.dto;
+package com.mickey.cinebook.auth.dto;
 
-import com.mickey.cinebook.entity.enums.Role;
+import com.mickey.cinebook.auth.entity.enums.Role;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;

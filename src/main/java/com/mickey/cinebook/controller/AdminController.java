@@ -1,7 +1,7 @@
 package com.mickey.cinebook.controller;
 
 import com.mickey.cinebook.auth.service.impl.UserServiceImpl;
-import com.mickey.cinebook.dto.UserResponseDto;
+import com.mickey.cinebook.auth.dto.UserResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

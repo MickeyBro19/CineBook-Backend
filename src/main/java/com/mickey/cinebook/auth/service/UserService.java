@@ -1,7 +1,7 @@
 package com.mickey.cinebook.auth.service;
 
-import com.mickey.cinebook.dto.UserRequestDto;
-import com.mickey.cinebook.dto.UserResponseDto;
+import com.mickey.cinebook.auth.dto.UserRequestDto;
+import com.mickey.cinebook.auth.dto.UserResponseDto;
 
 import java.util.List;
 

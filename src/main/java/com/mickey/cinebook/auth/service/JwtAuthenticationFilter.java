@@ -1,8 +1,8 @@
 package com.mickey.cinebook.auth.service;
 
 
-import com.mickey.cinebook.entity.User;
-import com.mickey.cinebook.repository.UserRepository;
+import com.mickey.cinebook.auth.entity.User;
+import com.mickey.cinebook.auth.repository.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

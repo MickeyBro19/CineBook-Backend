@@ -1,4 +1,4 @@
-package com.mickey.cinebook.dto;
+package com.mickey.cinebook.auth.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
