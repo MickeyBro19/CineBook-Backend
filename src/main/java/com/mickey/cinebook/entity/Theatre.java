@@ -10,7 +10,10 @@ import java.time.Instant;
 @Getter
 @Setter
 @Builder
-@Table(name = "theatres")
+@Table(name = "theatres",uniqueConstraints = {
+		@UniqueConstraint(name = "uk_theatre_name_and_city", columnNames = {"name","city"})
+})
+
 public class Theatre {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
