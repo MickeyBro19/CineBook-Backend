@@ -2,7 +2,6 @@ package com.mickey.cinebook.service;
 
 import com.mickey.cinebook.dto.MovieRequest;
 import com.mickey.cinebook.dto.MovieResponse;
-import com.mickey.cinebook.entity.Movie;
 
 import java.util.List;
 

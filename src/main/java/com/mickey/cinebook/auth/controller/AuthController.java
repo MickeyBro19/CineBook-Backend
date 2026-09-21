@@ -21,7 +21,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -53,7 +52,7 @@ public class AuthController {
 	
 	@PostMapping("/login")
 	public ResponseEntity<TokenResponseDto> login(@Valid @RequestBody LoginRequestDto loginRequest, HttpServletResponse response) {
-		Authentication auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.email().toLowerCase().trim(), loginRequest.password()));
+		authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.email().toLowerCase().trim(), loginRequest.password()));
 		User user = userRepository.findByEmail(loginRequest.email()).orElseThrow(() -> new BadCredentialsException("Invalid email or password"));
 		if (!user.isEnabled()) {
 			throw new DisabledException("User is disabled");

@@ -1,6 +1,5 @@
 package com.mickey.cinebook.dto;
 
-import com.mickey.cinebook.entity.Movie;
 import lombok.*;
 
 import java.time.Instant;
