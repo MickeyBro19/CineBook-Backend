@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -47,6 +48,7 @@ public class SeatController {
 	}
 	
 	@PostMapping
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<SeatResponse> create(
 			@Valid @RequestBody SeatRequest request
 	                                          ) {
@@ -57,6 +59,7 @@ public class SeatController {
 	}
 	
 	@PutMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<SeatResponse> update(
 			@PathVariable Long id,
 			@Valid @RequestBody SeatRequest request
@@ -68,6 +71,7 @@ public class SeatController {
 	}
 	
 	@DeleteMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<Void> delete(
 			@PathVariable Long id
 	                                  ) {

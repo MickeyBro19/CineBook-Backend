@@ -6,6 +6,7 @@ import com.mickey.cinebook.service.MovieService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class MovieController {
 	}
 	
 	@PostMapping
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<MovieResponse> create(@Valid @RequestBody MovieRequest movieRequest) {
 		return ResponseEntity.ok(movieService.create(movieRequest));
 	}
@@ -34,6 +36,7 @@ public class MovieController {
 	}
 	
 	@PutMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<MovieResponse> update(
 			@PathVariable Long id,
 			@Valid @RequestBody MovieRequest movieRequest) {
@@ -41,6 +44,7 @@ public class MovieController {
 	}
 	
 	@DeleteMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<Void> delete(@PathVariable Long id) {
 		movieService.delete(id);
 		return ResponseEntity.noContent().build();

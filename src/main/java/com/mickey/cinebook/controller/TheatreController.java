@@ -6,6 +6,7 @@ import com.mickey.cinebook.service.TheatreService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class TheatreController {
 	}
 	
 	@PostMapping
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<TheatreResponse> create(@Valid @RequestBody TheatreRequest theatreRequest) {
 		return ResponseEntity.ok(theatreService.create(theatreRequest));
 	}
@@ -34,6 +36,7 @@ public class TheatreController {
 	}
 	
 	@PutMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<TheatreResponse> update(
 			@PathVariable Long id,
 			@Valid @RequestBody TheatreRequest theatreRequest) {
@@ -41,6 +44,7 @@ public class TheatreController {
 	}
 	
 	@DeleteMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<Void> delete(@PathVariable Long id) {
 		theatreService.delete(id);
 		return ResponseEntity.noContent().build();
