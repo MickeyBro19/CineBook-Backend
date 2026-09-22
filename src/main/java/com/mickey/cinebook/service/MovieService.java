@@ -15,4 +15,6 @@ public interface MovieService {
 	MovieResponse update(Long id, MovieRequest movieRequest);
 	
 	void delete(Long id);
+	
+	MovieResponse findByName(String name);
 }

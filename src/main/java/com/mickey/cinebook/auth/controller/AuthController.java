@@ -8,6 +8,7 @@ import com.mickey.cinebook.auth.entity.RefreshToken;
 import com.mickey.cinebook.auth.entity.User;
 import com.mickey.cinebook.auth.repository.RefreshTokenRepository;
 import com.mickey.cinebook.auth.repository.UserRepository;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -32,6 +33,10 @@ import java.util.Arrays;
 import java.util.Optional;
 import java.util.UUID;
 
+@Tag(
+		name = "Admin",
+		description = "Administrative APIs, for admin access: \n email:admin@gmail.com, password:abc"
+)
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor

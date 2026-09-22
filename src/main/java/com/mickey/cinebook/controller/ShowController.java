@@ -3,6 +3,7 @@ package com.mickey.cinebook.controller;
 import com.mickey.cinebook.dto.ShowRequest;
 import com.mickey.cinebook.dto.ShowResponse;
 import com.mickey.cinebook.service.ShowService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -12,6 +13,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+@Tag(
+		name = "Shows",
+		description = "Movie show scheduling APIs"
+)
 @RestController
 @RequestMapping("/api/show")
 @RequiredArgsConstructor

@@ -3,6 +3,7 @@ package com.mickey.cinebook.controller;
 import com.mickey.cinebook.dto.BookingRequest;
 import com.mickey.cinebook.dto.BookingResponse;
 import com.mickey.cinebook.service.BookingService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Tag(
+		name = "Bookings",
+		description = "Movie ticket booking APIs"
+)
 @RestController
 @RequestMapping("/api/booking")
 @RequiredArgsConstructor

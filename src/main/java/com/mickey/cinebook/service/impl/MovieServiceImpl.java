@@ -38,8 +38,15 @@ public class MovieServiceImpl implements MovieService {
 	
 	@Override
 	public MovieResponse findById(Long id) {
-		return movieRepository.findById(id).map(this :: toResponse).orElseThrow(() -> new ResourceNotFoundException("Movie not found"));
-	}
+		Movie movie = movieRepository.findById(id)
+				.orElseThrow(() ->
+						             new ResourceNotFoundException("Movie doesn't exist"));
+		
+		if (!movie.isActive()) {
+			throw new ResourceNotFoundException("Movie doesn't exist");
+		}
+		
+		return toResponse(movie);	}
 	
 	
 	@Override
@@ -74,5 +81,18 @@ public class MovieServiceImpl implements MovieService {
 		
 		movie.setActive(false);
 		movieRepository.save(movie);
+	}
+	
+	@Override
+	public MovieResponse findByName(String name) {
+		Movie movie = movieRepository.findByTitleIgnoreCase(name)
+				.orElseThrow(() ->
+						             new ResourceNotFoundException("Movie doesn't exist"));
+		
+		if (!movie.isActive()) {
+			throw new ResourceNotFoundException("Movie doesn't exist");
+		}
+		
+		return toResponse(movie);
 	}
 }

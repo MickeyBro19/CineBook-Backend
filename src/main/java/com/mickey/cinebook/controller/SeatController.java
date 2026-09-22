@@ -3,6 +3,7 @@ package com.mickey.cinebook.controller;
 import com.mickey.cinebook.dto.SeatRequest;
 import com.mickey.cinebook.dto.SeatResponse;
 import com.mickey.cinebook.service.SeatService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -12,6 +13,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+@Tag(
+		name = "Seats",
+		description = "Seat management APIs"
+)
 @RestController
 @RequestMapping("/api/seats")
 @RequiredArgsConstructor

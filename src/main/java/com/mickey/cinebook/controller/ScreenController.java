@@ -3,6 +3,7 @@ package com.mickey.cinebook.controller;
 import com.mickey.cinebook.dto.ScreenRequest;
 import com.mickey.cinebook.dto.ScreenResponse;
 import com.mickey.cinebook.service.ScreenService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -12,6 +13,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+@Tag(
+		name = "Screens",
+		description = "Cinema screen management APIs"
+)
 @RestController
 @RequestMapping("/api/screens")
 @RequiredArgsConstructor
