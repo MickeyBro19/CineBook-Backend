@@ -13,6 +13,8 @@ import com.mickey.cinebook.repository.SeatRepository;
 import com.mickey.cinebook.repository.ShowRepository;
 import com.mickey.cinebook.service.BookingService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -145,12 +147,12 @@ public class BookingServiceImpl implements BookingService {
 	
 	@Override
 	@Transactional(readOnly = true)
-	public List<BookingResponse> findMyBookings() {
+	public Page<BookingResponse> findMyBookings(Pageable pageable) {
 		
 		User user = getCurrentUser();
+		Page<Booking> bookings= bookingRepository.findByUserId(user.getId(), pageable);
 		
-		return bookingRepository.findByUserId(user.getId())
-				.stream()
+		return bookings
 				.map(booking -> {
 					
 					List<Seat> seats = bookingSeatRepository
@@ -160,8 +162,7 @@ public class BookingServiceImpl implements BookingService {
 							.toList();
 					
 					return toResponse(booking, seats);
-				})
-				.toList();
+				});
 	}
 	
 	@Override

@@ -7,11 +7,13 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Tag(
 		name = "Movies",
@@ -29,8 +31,14 @@ public class MovieController {
 			description = "Returns all currently active movies"
 	)
 	@GetMapping
-	public ResponseEntity<List<MovieResponse>> findAll() {
-		return ResponseEntity.ok(movieService.findAll());
+	public ResponseEntity<Page<MovieResponse>> findAll(
+			@RequestParam(defaultValue = "0") int page,
+			@RequestParam(defaultValue = "10") int size,
+			@RequestParam(defaultValue = "id") String sortBy,
+			@RequestParam(defaultValue = "asc") String direction) {
+		Sort sort = direction.equalsIgnoreCase("desc") ? Sort.by(sortBy).descending() : Sort.by(sortBy).ascending();
+		Pageable pageable = PageRequest.of(page, size, sort);
+		return ResponseEntity.ok(movieService.findAll(pageable));
 	}
 	
 	@Operation(
@@ -53,7 +61,8 @@ public class MovieController {
 		
 		return ResponseEntity.ok(movieService.findByName(name));
 	}
-//
+	
+	//
 //	@Operation(
 //			summary = "Get movie by id",
 //			description = "Returns an active movie matching the supplied id"
@@ -74,6 +83,7 @@ public class MovieController {
 			@Valid @RequestBody MovieRequest movieRequest) {
 		return ResponseEntity.ok(movieService.update(id, movieRequest));
 	}
+	
 	@Operation(
 			summary = "Deactivate a movie",
 			description = "Soft deletes a movie. Admin access required."

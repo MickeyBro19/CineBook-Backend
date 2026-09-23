@@ -2,12 +2,14 @@ package com.mickey.cinebook.service;
 
 import com.mickey.cinebook.dto.ShowRequest;
 import com.mickey.cinebook.dto.ShowResponse;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
 public interface ShowService {
 	
-	List<ShowResponse> findAll();
+	Page<ShowResponse> findAll(Pageable pageable);
 	
 	ShowResponse findById(Long id);
 	

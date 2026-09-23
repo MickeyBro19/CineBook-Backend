@@ -11,9 +11,9 @@ import com.mickey.cinebook.repository.ScreenRepository;
 import com.mickey.cinebook.repository.ShowRepository;
 import com.mickey.cinebook.service.ShowService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -24,12 +24,10 @@ public class ShowServiceImpl implements ShowService {
 	private final ScreenRepository screenRepository;
 	
 	@Override
-	public List<ShowResponse> findAll() {
+	public Page<ShowResponse> findAll(Pageable pageable) {
+		Page<Show> shows = showRepository.findAll(pageable);
 		
-		return showRepository.findByIsActiveTrue()
-				.stream()
-				.map(this :: toResponse)
-				.toList();
+		return shows.map(this::toResponse);
 	}
 	
 	private ShowResponse toResponse(Show show) {

@@ -7,6 +7,8 @@ import com.mickey.cinebook.exception.ResourceNotFoundException;
 import com.mickey.cinebook.repository.MovieRepository;
 import com.mickey.cinebook.service.MovieService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,11 +19,9 @@ public class MovieServiceImpl implements MovieService {
 	private final MovieRepository movieRepository;
 	
 	@Override
-	public List<MovieResponse> findAll() {
-		return movieRepository.findByIsActiveTrue()
-				.stream()
-				.map(this :: toResponse)
-				.toList();
+	public Page<MovieResponse> findAll(Pageable pageable) {
+		Page<Movie> moviePage = movieRepository.findAll(pageable);
+		return moviePage.map(this::toResponse);
 	}
 	
 	private MovieResponse toResponse(Movie movie) {

@@ -10,9 +10,9 @@ import com.mickey.cinebook.repository.TheatreRepository;
 import com.mickey.cinebook.service.ScreenService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -35,11 +35,9 @@ public class ScreenServiceImpl implements ScreenService {
 	}
 	
 	@Override
-	public List<ScreenResponse> findAll() {
-		return screenRepository.findByIsActiveTrue()
-				.stream()
-				.map(this::toResponse)
-				.toList();
+	public Page<ScreenResponse> findAll(Pageable pageable) {
+		Page<Screen> screens = screenRepository.findAll(pageable);
+		return screens.map(this::toResponse);
 	}
 	
 	@Override

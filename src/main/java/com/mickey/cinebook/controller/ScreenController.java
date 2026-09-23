@@ -6,12 +6,14 @@ import com.mickey.cinebook.service.ScreenService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 
 @Tag(
@@ -26,8 +28,14 @@ public class ScreenController {
 	private final ScreenService screenService;
 	
 	@GetMapping
-	public ResponseEntity<List<ScreenResponse>> findAll() {
-		return ResponseEntity.ok(screenService.findAll());
+	public ResponseEntity<Page<ScreenResponse>> findAll(
+			@RequestParam(defaultValue = "0") int page,
+			@RequestParam(defaultValue = "10") int size,
+			@RequestParam(defaultValue = "id") String sortBy,
+			@RequestParam(defaultValue = "asc") String direction) {
+		Sort sort = direction.equalsIgnoreCase("desc") ? Sort.by(sortBy).descending() : Sort.by(sortBy).ascending();
+		Pageable pageable = PageRequest.of(page, size, sort);
+		return ResponseEntity.ok(screenService.findAll(pageable));
 	}
 	
 	@GetMapping("/{id}")
