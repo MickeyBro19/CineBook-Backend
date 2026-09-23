@@ -1,11 +1,10 @@
-package com.mickey.cinebook.service;
+package com.mickey.cinebook.service.impl;
 
 import com.mickey.cinebook.dto.MovieRequest;
 import com.mickey.cinebook.dto.MovieResponse;
 import com.mickey.cinebook.entity.Movie;
 import com.mickey.cinebook.exception.ResourceNotFoundException;
 import com.mickey.cinebook.repository.MovieRepository;
-import com.mickey.cinebook.service.impl.MovieServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
